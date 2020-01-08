@@ -4,6 +4,7 @@ in {
   imports = [
     ../profiles/games
     ../profiles/misc
+    ../profiles/misc/disable-mitigations.nix
     ../profiles/misc/plex.nix
     ../profiles/misc/torrent.nix
     ../users/nrd
@@ -49,4 +50,6 @@ in {
     enable = true;
     editor = false;
   };
+
+  security.mitigations.acceptRisk = true;
 }
