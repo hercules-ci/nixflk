@@ -7,6 +7,7 @@ in {
     ../profiles/misc/disable-mitigations.nix
     ../profiles/misc/plex.nix
     ../profiles/misc/torrent.nix
+    ../profiles/postgres
     ../users/nrd
   ];
 

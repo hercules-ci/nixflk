@@ -159,6 +159,14 @@ in {
     };
   };
 
+  services.postgresql = {
+    ensureDatabases = [ "nrd" ];
+    ensureUsers = [{
+      name = "nrd";
+      ensurePermissions = { "DATABASE nrd" = "ALL PRIVILEGES"; };
+    }];
+  };
+
   users.groups.media.members = [ "nrd" ];
 
   users.users.nrd = {
