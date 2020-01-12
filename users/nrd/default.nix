@@ -11,7 +11,12 @@ in {
 
   users.users.root.hashedPassword = fileContents ../../secrets/root;
 
-  users.users.nrd.packages = with pkgs; [ riot-desktop signal-desktop pandoc ];
+  users.users.nrd.packages = with pkgs; [
+    python3Packages.grip
+    riot-desktop
+    signal-desktop
+    pandoc
+  ];
 
   programs.gnupg.agent = {
     enable = true;
