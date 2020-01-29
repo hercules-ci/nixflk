@@ -15,6 +15,8 @@ in {
     python3Packages.grip
     riot-desktop
     signal-desktop
+    slack-dark
+    zoom-us
     pandoc
   ];
 
