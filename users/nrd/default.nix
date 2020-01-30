@@ -18,6 +18,7 @@ in {
     slack-dark
     zoom-us
     pandoc
+    discord
   ];
 
   programs.gnupg.agent = {
