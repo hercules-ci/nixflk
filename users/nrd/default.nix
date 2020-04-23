@@ -7,26 +7,18 @@ let
   name = "Timothy DeHerrera";
 in {
 
-  imports = [ ../../profiles/graphical ../../profiles/virt ];
+  imports = [ ../../profiles/develop ];
 
   users.users.root.hashedPassword = fileContents ../../secrets/root;
 
-  users.users.nrd.packages = with pkgs; [
-    python3Packages.grip
-    riot-desktop
-    signal-desktop
-    slack-dark
-    zoom-us
-    pandoc
-    discord
-  ];
+  users.users.nrd.packages = with pkgs; [ pandoc ];
 
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
 
-  environment.systemPackages = with pkgs; [ nrd-logo pinentry_gnome ];
+  environment.systemPackages = with pkgs; [ nrd-logo pinentry_curses ];
 
   home-manager.users.nrd = {
     home = {
@@ -182,6 +174,6 @@ in {
     description = name;
     isNormalUser = true;
     hashedPassword = fileContents ../../secrets/nrd;
-    extraGroups = [ "wheel" "input" "networkmanager" "adbusers" "libvirtd" ];
+    extraGroups = [ "wheel" "input" ];
   };
 }
