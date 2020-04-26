@@ -18,7 +18,7 @@ in {
     enableSSHSupport = true;
   };
 
-  environment.systemPackages = with pkgs; [ nrd-logo pinentry_curses ];
+  environment.systemPackages = with pkgs; [ nrd-logo ];
 
   home-manager.users.nrd = {
     home = {
@@ -28,6 +28,9 @@ in {
         ".ec2-keys".source = ../../secrets/ec2;
         ".cargo/credentials".source = ../../secrets/cargo;
         ".zshrc".text = "#";
+        ".gnupg/gpg-agent.conf".text = ''
+          pinentry-program ${pkgs.pinentry_curses}/bin/pinentry-curses
+        '';
       };
     };
 
