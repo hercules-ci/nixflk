@@ -39,7 +39,6 @@ in {
       settings = {
         env.TERM = "xterm-256color";
         window.decorations = "full";
-        tabspaces = 2;
         font.size = 9.0;
         cursor.style = "Beam";
 
