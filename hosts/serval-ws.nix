@@ -71,7 +71,15 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  services.fstrim.enable = true;
+
+  services.picom = {
+    backend = "glx";
+    vSync = true;
+  };
+
   security.mitigations.acceptRisk = true;
 
   hardware.nvidia.modesetting.enable = true;
+  hardware.cpu.intel.updateMicrocode = true;
 }
