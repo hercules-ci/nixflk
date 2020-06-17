@@ -63,6 +63,7 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   networking.useDHCP = false;
   networking.interfaces.enp109s0.useDHCP = true;
