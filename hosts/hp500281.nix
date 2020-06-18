@@ -3,11 +3,13 @@ let inherit (builtins) readFile;
 in {
   imports = [
     ../profiles/games
+    ../profiles/graphical
     ../profiles/misc
     ../profiles/misc/disable-mitigations.nix
     ../profiles/misc/plex.nix
     ../profiles/misc/torrent.nix
     ../profiles/postgres
+    ../profiles/ssh
     ../users/nrd
   ];
 
