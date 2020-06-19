@@ -64,6 +64,7 @@
 
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd.enable = true;
 
   networking.useDHCP = false;
   networking.interfaces.enp109s0.useDHCP = true;
