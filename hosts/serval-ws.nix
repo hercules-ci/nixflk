@@ -68,7 +68,7 @@
 
   networking.useDHCP = false;
   networking.interfaces.enp109s0.useDHCP = true;
-  networking.interfaces.wlp112s0.useDHCP = true;
+  networking.interfaces.wlan0.useDHCP = true;
 
   nix.maxJobs = lib.mkDefault 16;
 
