@@ -9,7 +9,6 @@
     ../users/nrd
     ../profiles/graphical
     ../profiles/laptop
-    ../profiles/misc
     ../profiles/misc/disable-mitigations.nix
     ../profiles/misc/torrent.nix
     ../profiles/games
@@ -61,10 +60,6 @@
     device = "/dev/disk/by-uuid/CD10-5E00";
     fsType = "vfat";
   };
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
-  networking.wireless.iwd.enable = true;
 
   networking.useDHCP = false;
   networking.interfaces.enp109s0.useDHCP = true;
