@@ -176,6 +176,6 @@ in {
     description = name;
     isNormalUser = true;
     hashedPassword = fileContents ../../secrets/nrd;
-    extraGroups = [ "wheel" "input" ];
+    extraGroups = [ "wheel" "input" "networkmanager" "libvirtd" ];
   };
 }
