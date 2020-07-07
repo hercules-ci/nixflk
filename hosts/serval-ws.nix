@@ -12,6 +12,7 @@
     ../profiles/misc/disable-mitigations.nix
     ../profiles/misc/torrent.nix
     ../profiles/games
+    ../profiles/virt
   ];
 
   boot.initrd.availableKernelModules =
