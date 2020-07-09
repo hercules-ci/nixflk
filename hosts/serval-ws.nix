@@ -72,6 +72,12 @@
 
   services.fstrim.enable = true;
 
+  services.xserver.windowManager.steam.extraSessionCommands = ''
+    if ! xrandr | grep HDMI-0 | grep disconnected > /dev/null; then
+      xrandr --output DP-0 --off
+    fi
+  '';
+
   services.picom = {
     backend = "glx";
     vSync = true;
