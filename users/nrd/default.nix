@@ -7,7 +7,7 @@ let
   name = "Timothy DeHerrera";
 in {
 
-  imports = [ ../../profiles/develop ];
+  imports = [ ../../profiles/develop ../../cachix.nix ];
 
   users.users.root.hashedPassword = fileContents ../../secrets/root;
 
@@ -18,7 +18,7 @@ in {
     enableSSHSupport = true;
   };
 
-  environment.systemPackages = with pkgs; [ nrd-logo ];
+  environment.systemPackages = with pkgs; [ nrd-logo cachix ];
 
   home-manager.users.nrd = {
     home = {
@@ -31,6 +31,7 @@ in {
         ".gnupg/gpg-agent.conf".text = ''
           pinentry-program ${pkgs.pinentry_curses}/bin/pinentry-curses
         '';
+        ".config/cachix/cachix.dhall".source = ../../secrets/cachix.dhall;
       };
     };
 
