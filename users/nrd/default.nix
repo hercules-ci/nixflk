@@ -7,7 +7,7 @@ let
   name = "Timothy DeHerrera";
 in {
 
-  imports = [ ../../profiles/develop ../../cachix.nix ];
+  imports = [ ../../profiles/develop ../../cachix.nix ./vpn.nix ];
 
   users.users.root.hashedPassword = fileContents ../../secrets/root;
 
