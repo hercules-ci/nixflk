@@ -7,7 +7,7 @@ let
   name = "Timothy DeHerrera";
 in {
 
-  imports = [ ../../profiles/develop ./vpn.nix ];
+  imports = [ ../../profiles/develop ./vpn.nix ./mail.nix ];
 
   users.users.root.hashedPassword = fileContents ../../secrets/root;
 
