@@ -1,10 +1,10 @@
-{ unstablePkgs, ... }: {
+{ config, pkgs, ... }: {
 
   imports = [ ../../profiles/networkmanager ];
 
-  environment.systemPackages = with unstablePkgs; [ protonvpn-cli-ng ];
+  environment.systemPackages = with pkgs; [ protonvpn-cli-ng ];
 
-  systemd.services.protonvpn = with unstablePkgs; {
+  systemd.services.protonvpn = with pkgs; {
     enable = true;
     after = [ "network-online.target" ];
     description = "Auto-Connect to Fastest ProtonVPN Server";
@@ -17,7 +17,8 @@
       PVPN_DEBUG = "1";
     };
 
-    serviceConfig = {
+    serviceConfig = let systemd = config.systemd.package;
+    in {
       Type = "forking";
       ExecStart = "${protonvpn-cli-ng}/bin/protonvpn c -f";
       ExecStop = "${protonvpn-cli-ng}/bin/protonvpn d";
