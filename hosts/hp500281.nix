@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 let inherit (builtins) readFile;
-in {
+in
+{
   imports = [
     ../profiles/games
     ../profiles/graphical

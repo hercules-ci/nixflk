@@ -5,7 +5,8 @@ let
   inherit (lib) fileContents mkForce;
 
   name = "Timothy DeHerrera";
-in {
+in
+{
 
   imports = [ ../../profiles/develop ./vpn.nix ./mail.nix ];
 
@@ -138,27 +139,29 @@ in {
       enable = true;
       hashKnownHosts = true;
 
-      matchBlocks = let
-        githubKey = toFile "github" (readFile ../../secrets/github);
+      matchBlocks =
+        let
+          githubKey = toFile "github" (readFile ../../secrets/github);
 
-        gitlabKey = toFile "gitlab" (readFile ../../secrets/gitlab);
-      in {
-        github = {
-          host = "github.com";
-          identityFile = githubKey;
-          extraOptions = { AddKeysToAgent = "yes"; };
+          gitlabKey = toFile "gitlab" (readFile ../../secrets/gitlab);
+        in
+        {
+          github = {
+            host = "github.com";
+            identityFile = githubKey;
+            extraOptions = { AddKeysToAgent = "yes"; };
+          };
+          gitlab = {
+            host = "gitlab.com";
+            identityFile = gitlabKey;
+            extraOptions = { AddKeysToAgent = "yes"; };
+          };
+          "gitlab.company" = {
+            host = "gitlab.company.com";
+            identityFile = gitlabKey;
+            extraOptions = { AddKeysToAgent = "yes"; };
+          };
         };
-        gitlab = {
-          host = "gitlab.com";
-          identityFile = gitlabKey;
-          extraOptions = { AddKeysToAgent = "yes"; };
-        };
-        "gitlab.company" = {
-          host = "gitlab.company.com";
-          identityFile = gitlabKey;
-          extraOptions = { AddKeysToAgent = "yes"; };
-        };
-      };
     };
   };
 

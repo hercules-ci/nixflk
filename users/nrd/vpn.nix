@@ -17,17 +17,19 @@
       PVPN_DEBUG = "1";
     };
 
-    serviceConfig = let systemd = config.systemd.package;
-    in {
-      Type = "forking";
-      ExecStart = "${protonvpn-cli-ng}/bin/protonvpn c -f";
-      ExecStop = "${protonvpn-cli-ng}/bin/protonvpn d";
-      ExecStartPost = writeShellScript "vpn-resolved" ''
-        nameserver=$(tail -1 /etc/resolv.conf | cut -d ' ' -f 2)
-        ${systemd}/bin/resolvectl dnsovertls proton0 no
-        ${systemd}/bin/resolvectl dns proton0 $nameserver
-        ${systemd}/bin/resolvectl domain proton0 '~.'
-      '';
-    };
+    serviceConfig =
+      let systemd = config.systemd.package;
+      in
+      {
+        Type = "forking";
+        ExecStart = "${protonvpn-cli-ng}/bin/protonvpn c -f";
+        ExecStop = "${protonvpn-cli-ng}/bin/protonvpn d";
+        ExecStartPost = writeShellScript "vpn-resolved" ''
+          nameserver=$(tail -1 /etc/resolv.conf | cut -d ' ' -f 2)
+          ${systemd}/bin/resolvectl dnsovertls proton0 no
+          ${systemd}/bin/resolvectl dns proton0 $nameserver
+          ${systemd}/bin/resolvectl domain proton0 '~.'
+        '';
+      };
   };
 }
