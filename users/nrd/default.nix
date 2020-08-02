@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 let
   inherit (builtins) toFile readFile;
-
   inherit (lib) fileContents mkForce;
 
   name = "Timothy DeHerrera";
@@ -22,6 +21,8 @@ in
   environment.systemPackages = with pkgs; [ nrd-logo cachix ];
 
   home-manager.users.nrd = {
+    imports = [ ../profiles/git ../profiles/alacritty ../profiles/direnv ];
+
     home = {
       packages = mkForce [ ];
 
@@ -36,49 +37,6 @@ in
       };
     };
 
-    programs.alacritty = {
-      enable = true;
-      settings = {
-        env.TERM = "xterm-256color";
-        window.decorations = "full";
-        font.size = 9.0;
-        cursor.style = "Beam";
-
-        # snazzy theme
-        colors = {
-          # Default colors
-          primary = {
-            background = "0x282a36";
-            foreground = "0xeff0eb";
-          };
-
-          # Normal colors
-          normal = {
-            black = "0x282a36";
-            red = "0xff5c57";
-            green = "0x5af78e";
-            yellow = "0xf3f99d";
-            blue = "0x57c7ff";
-            magenta = "0xff6ac1";
-            cyan = "0x9aedfe";
-            white = "0xf1f1f0";
-          };
-
-          # Bright colors
-          bright = {
-            black = "0x686868";
-            red = "0xff5c57";
-            green = "0x5af78e";
-            yellow = "0xf3f99d";
-            blue = "0x57c7ff";
-            magenta = "0xff6ac1";
-            cyan = "0x9aedfe";
-            white = "0xf1f1f0";
-          };
-        };
-      };
-    };
-
     programs.mpv = {
       enable = true;
       config = {
@@ -89,44 +47,6 @@ in
     };
 
     programs.git = {
-      enable = true;
-
-      aliases = {
-        a = "add -p";
-        co = "checkout";
-        cob = "checkout -b";
-        f = "fetch -p";
-        c = "commit";
-        p = "push";
-        ba = "branch -a";
-        bd = "branch -d";
-        bD = "branch -D";
-        d = "diff";
-        dc = "diff --cached";
-        ds = "diff --staged";
-        r = "restore";
-        rs = "restore --staged";
-        st = "status -sb";
-
-        # reset
-        soft = "reset --soft";
-        hard = "reset --hard";
-        s1ft = "soft HEAD~1";
-        h1rd = "hard HEAD~1";
-
-        # logging
-        lg =
-          "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-        plog =
-          "log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'";
-        tlog =
-          "log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative";
-        rank = "shortlog -sn --no-merges";
-
-        # delete merged branches
-        bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d";
-      };
-
       userName = name;
       userEmail = "tim.deh@pm.me";
       signing = {
