@@ -3,7 +3,7 @@ let inherit (builtins) readFile;
 in
 {
   imports = [
-    ../profiles/games
+    ../profiles/graphical/games
     ../profiles/graphical
     ../profiles/misc
     ../profiles/misc/disable-mitigations.nix
