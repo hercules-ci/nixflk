@@ -7,7 +7,7 @@
     ../profiles/graphical
     ../profiles/laptop
     ../profiles/misc/disable-mitigations.nix
-    ../profiles/misc/torrent.nix
+    ../profiles/network/torrent.nix
     ../profiles/graphical/games
     ../profiles/virt
   ];

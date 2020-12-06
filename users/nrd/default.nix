@@ -24,6 +24,8 @@ in
     imports = [ ../profiles/git ../profiles/alacritty ../profiles/direnv ];
 
     home = {
+      stateVersion = "20.09";
+
       packages = mkForce [ ];
 
       file = {

@@ -3,7 +3,7 @@
 
     defaultSession = "none+xmonad";
 
-    sddm. autoLogin = {
+    autoLogin = {
       enable = true;
       user = "nrd";
     };

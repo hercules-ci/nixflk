@@ -1,8 +1,8 @@
 { config, pkgs, ... }: {
 
-  imports = [ ../../profiles/networkmanager ];
+  imports = [ ../../profiles/network/networkmanager ];
 
-  environment.systemPackages = with pkgs; [ protonvpn-cli-ng ];
+  environment.systemPackages = with pkgs; [ protonvpn-cli ];
 
   systemd.services.protonvpn = with pkgs; {
     enable = true;
@@ -22,8 +22,8 @@
       in
       {
         Type = "forking";
-        ExecStart = "${protonvpn-cli-ng}/bin/protonvpn c -f";
-        ExecStop = "${protonvpn-cli-ng}/bin/protonvpn d";
+        ExecStart = "${protonvpn-cli}/bin/protonvpn c -f";
+        ExecStop = "${protonvpn-cli}/bin/protonvpn d";
         ExecStartPost = writeShellScript "vpn-resolved" ''
           nameserver=$(tail -1 /etc/resolv.conf | cut -d ' ' -f 2)
           ${systemd}/bin/resolvectl dnsovertls proton0 no

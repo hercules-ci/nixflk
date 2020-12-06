@@ -5,10 +5,9 @@ in
   imports = [
     ../profiles/graphical/games
     ../profiles/graphical
-    ../profiles/misc
     ../profiles/misc/disable-mitigations.nix
-    ../profiles/misc/plex.nix
-    ../profiles/misc/torrent.nix
+    ../profiles/graphical/plex.nix
+    ../profiles/network/torrent.nix
     ../profiles/postgres
     ../profiles/ssh
     ../users/nrd
