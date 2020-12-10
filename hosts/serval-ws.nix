@@ -1,4 +1,4 @@
-{ lib, modulesPath, ... }:
+{ lib, modulesPath, pkgs, ... }:
 
 {
   imports = [
@@ -11,6 +11,8 @@
     ../profiles/graphical/games
     ../profiles/virt
   ];
+
+  environment.systemPackages = [ pkgs.system76-firmware ];
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "sd_mod" "sdhci_pci" ];
@@ -84,4 +86,5 @@
 
   hardware.nvidia.modesetting.enable = true;
   hardware.cpu.intel.updateMicrocode = true;
+  hardware.system76.enableAll = true;
 }
