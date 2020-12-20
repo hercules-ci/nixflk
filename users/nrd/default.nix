@@ -24,10 +24,6 @@ in
     imports = [ ../profiles/git ../profiles/alacritty ../profiles/direnv ];
 
     home = {
-      stateVersion = "20.09";
-
-      packages = mkForce [ ];
-
       file = {
         ".ec2-keys".source = ../../secrets/ec2;
         ".cargo/credentials".source = ../../secrets/cargo;
