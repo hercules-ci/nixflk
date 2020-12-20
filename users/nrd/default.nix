@@ -7,7 +7,7 @@ let
 in
 {
 
-  imports = [ ../../profiles/develop ./vpn.nix ./mail.nix ./graphical ];
+  imports = [ ../../profiles/develop ./graphical ];
 
   users.users.root.hashedPassword = fileContents ../../secrets/root;
 
