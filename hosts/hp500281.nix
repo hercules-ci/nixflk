@@ -8,7 +8,7 @@ in
     ../profiles/misc/disable-mitigations.nix
     ../profiles/graphical/plex.nix
     ../profiles/network/torrent.nix
-    ../profiles/postgres
+    ../profiles/db/postgres
     ../profiles/ssh
     ../users/nrd
   ];
