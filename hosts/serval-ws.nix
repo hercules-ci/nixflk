@@ -39,19 +39,14 @@
     };
   };
 
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiVdpau
+    libvdpau-va-gl
+  ];
+
   boot.initrd.secrets = { "/luks.keyfile" = ../secrets/luks.keyfile; };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0f620bef-d09e-4634-bce1-e04a23309f5d";
-    fsType = "xfs";
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/27223f71-d19e-436d-8a89-f00a4ad12696";
-    fsType = "xfs";
-  };
-
-  fileSystems."/home" = {
     device = "/dev/disk/by-uuid/47f467dc-cf6e-4668-977d-14b344604f64";
     fsType = "xfs";
   };
