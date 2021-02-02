@@ -16,7 +16,7 @@ with profiles;
 mapAttrs (_: v: lib.flk.profileMap v)
   # define your own suites below
   rec {
-    work = [ develop virt users.nrd ];
+    work = [ develop virt users.nrd ci-agent ];
 
     graphics = work ++ [ graphical ];
 
