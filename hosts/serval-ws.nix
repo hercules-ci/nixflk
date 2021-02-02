@@ -1,16 +1,7 @@
-{ lib, modulesPath, pkgs, ... }:
+{ lib, modulesPath, pkgs, suites, ... }:
 
 {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    ../users/nrd
-    ../profiles/graphical
-    ../profiles/laptop
-    ../profiles/misc/disable-mitigations.nix
-    ../profiles/network/torrent.nix
-    ../profiles/graphical/games
-    ../profiles/virt
-  ];
+  imports = suites.goPlay;
 
   environment.systemPackages = [ pkgs.system76-firmware ];
 
