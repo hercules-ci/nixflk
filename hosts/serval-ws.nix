@@ -3,7 +3,12 @@
 {
   imports = suites.goPlay;
 
-  environment.systemPackages = [ pkgs.system76-firmware ];
+  environment.systemPackages = with pkgs; [
+    system76-firmware
+    obs-studio
+    obs-v4l2sink
+    obs-linuxbrowser
+  ];
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "sd_mod" "sdhci_pci" ];
@@ -11,6 +16,10 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   boot.loader.efi.canTouchEfiVariables = true;
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  services.usbmuxd.enable = true;
 
   boot.loader.grub = {
     enable = true;
@@ -56,6 +65,8 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   services.fstrim.enable = true;
+
+  services.hercules-ci-agent.concurrentTasks = 16;
 
   services.xserver.windowManager.steam.extraSessionCommands = ''
     if ! xrandr | grep HDMI-0 | grep disconnected > /dev/null; then
