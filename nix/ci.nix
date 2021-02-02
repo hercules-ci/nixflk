@@ -8,8 +8,7 @@ let
   shell = recurseIntoAttrs default.devShell.x86_64-linux;
 
   # failing on hercules-ci, probably until nix is updated
-  # ci = recurseIntoAttrs
-  #   default.nixosConfigurations.ci.config.system.build.toplevel;
+  ci = default.nixosConfigurations.ci.config.system.build.toplevel;
 in
 {
   inherit shell;
@@ -19,4 +18,5 @@ in
     x86_64-linux
     aarch64-linux
     ;
+  inherit ci;
 }

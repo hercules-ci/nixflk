@@ -6,7 +6,7 @@
       # Once desired, bump master's locked revision:
       # nix flake update --update-input master
       master.url = "nixpkgs/master";
-      nixos.url = "nixpkgs/release-20.09";
+      nixos.url = "github:hercules-ci/nixpkgs/debug-module-type-error";
       home.url = "github:nix-community/home-manager/release-20.09";
       flake-utils.url = "github:numtide/flake-utils/flatten-tree-system";
       devshell.url = "github:numtide/devshell";
