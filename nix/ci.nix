@@ -9,17 +9,16 @@ let
     inherit (default.devShell)
       i686-linux
       x86_64-linux
-      aarch64-linux
       ;
   };
 
-  ci = recurseIntoAttrs {
-    nixos = default.nixosConfigurations.ci.config.system.build.toplevel;
-    NixOS = default.nixosConfigurations.NixOS.config.system.build.toplevel;
-  };
+  # ci = recurseIntoAttrs {
+  #   nixos = default.nixosConfigurations.ci.config.system.build.toplevel;
+  #   NixOS = default.nixosConfigurations.NixOS.config.system.build.toplevel;
+  # };
 in
 {
-  inherit shell ci;
+  inherit shell;
   # platforms supported by our hercules-ci agent
   inherit (packages)
     i686-linux
